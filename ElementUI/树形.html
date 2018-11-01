@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="element.css">
+</head>
+<body>
+  <div id="app">
+    <<el-button  type="primary"  @click="onSearch">查询</el-button>
+  </div>
+</body>
+  <!-- 先引入 Vue -->
+  <script src="vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="element.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      },
+      methods:{
+      	onSearch() {
+    const loading = this.$loading({
+      lock: true,
+      text: 'Loading',
+      spinner: 'el-icon-loading',
+      background: 'rgba(0, 0, 0, 0.7)',
+      target: document.querySelector('.div1')
+    });
+    setTimeout(() => {
+      loading.close();
+    }, 2000);
+}
+      }
+    })
+  </script>
+</html>

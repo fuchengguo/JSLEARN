@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+
+	<body>
+		<input type="button" value="确定" id="btn1" />
+		<input type="button" name="" id="btn2" value="取消" />
+	</body>
+	<script type="text/javascript" src="../js/jquery-2.1.0.js"></script>
+	<script>
+		(function myalert(str1, str2, callback) {
+
+			var Btn1 = document.getElementById("btn1");
+			var Btn2 = document.getElementById("btn2");
+			Btn1.onclick = function() {
+				//				console.log(str1)
+				var P = document.createElement('P');
+//				var html1 = P.appendChild(document.createTextNode(str1));
+				P.innerHTML = str1;
+				P.setAttribute("id","sure")
+				
+				document.body.appendChild(P);
+				if(callback && typeof(callback) === "function") {
+					callback();
+				}
+			};
+			Btn2.onclick = function() {
+				
+			}
+
+		})("你確定嗎", "nishishei", function() {
+			console.log(111);
+		})
+//		myalert()
+	</script>
+	<style>
+			#sure{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+
+</html>

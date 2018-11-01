@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var arr = [1,2,3,4,5,6];
+		var sum = 0;
+		arr.forEach((currentValue,index,value) => {
+			sum += currentValue;
+		})
+		console.log(sum)
+		
+		//every 有一个元素不满足回调函数条件，返回false，不再执行
+		var a = arr.every((currentValue,index,value) => {
+			console.log(currentValue)
+			return currentValue > 2
+		})
+		console.log(a);
+		var b = arr.some((currentValue,index,value) => {
+			console.log(currentValue)
+			return currentValue > 2
+		})
+		console.log(b)
+		//some 一直运行到返回true
+	</script>
+</html>

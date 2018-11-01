@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//new 绑定和隐式绑定优先级
+	/*	function aa(a) {
+			this.a = a;
+		}
+		var obj1 = {
+			foo: aa
+		}
+		var obj2 = {
+			
+		}
+		obj1.foo(1);
+		console.log(obj1.a);//1
+		var bar = new obj1.foo(2);
+		console.log(obj1.a)//1
+		console.log(bar.a)//2
+		var qq = new aa(3)
+		console.log(qq.a)//3*/
+		//new 绑定和显示硬绑定
+		/*function aa(p1,p2) {
+			this.val = p1+'3232'+p2;
+		}
+		var bar = aa.bind(null,'p1');
+		var baz = new bar('p2');
+		console.log(baz.val)*/
+		//applay展开
+		/*var nullObj = Object.create(null);
+		function aa(a,b) {
+			console.log(a+ 'www' + b);
+		}
+		//把数组展开成参数
+		aa.apply(nullObj, [1,2,3])*/
+		function aa(a,v,b) {
+			console.log(arguments);
+			var currentId = [].slice.call(arguments, 1);
+			console.log(currentId)
+		}
+		aa(1,2,3,4)
+	</script>
+</html>

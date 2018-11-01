@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+		//Object和Function是JS自带的函数对象。
+		function Animal(name, blood) {
+			this.blood = blood;
+			this.name = name;
+		}
+		Animal.prototype.say = function() {
+			console.log("你好，我是一个" + this.name);
+		}
+		Animal.prototype = {
+			talk: function() {
+				return "talk";
+			},
+			height: 1000
+		}
+		
+		var cat = new Animal("cat", "500");
+		console.log(cat.blood);
+		console.log(cat.say);
+		console.log(cat.name);
+		console.log(cat.talk());
+	</script>
+
+</html>

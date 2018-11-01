@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		//		var _createClass = function() {
+		//			function defineProperties(target, props) {
+		//				for(var i = 0; i < props.length; i++) {
+		//					var descriptor = props[i];
+		//					descriptor.enumerable = descriptor.enumerable || false;
+		//					descriptor.configurable = true;
+		//					if("value" in descriptor) descriptor.writable = true;
+		//					Object.defineProperty(target, descriptor.key, descriptor);
+		//				}
+		//			}
+		//			return function(Constructor, protoProps, staticProps) {
+		//				if(protoProps) defineProperties(Constructor.prototype, protoProps);
+		//				if(staticProps) defineProperties(Constructor, staticProps);
+		//				return Constructor;
+		//			};
+		//		}();
+		//
+		//		function _classCallCheck(instance, Constructor) {
+		//			if(!(instance instanceof Constructor)) {
+		//				throw new TypeError("Cannot call a class as a function");
+		//			}
+		//		}
+		//
+		//		var i = 1;
+		//		var add = function add(num1, num2) {
+		//			return num1 + num2;
+		//		};
+		//		var b = 3;
+		//		var d = 9;
+		//		var _ref = [d, b];
+		//		b = _ref[0];
+		//		d = _ref[1];
+		//
+		//		console.log(b, d);
+		//
+		//		var Animal = function() {
+		//			function Animal(name) {
+		//				_classCallCheck(this, Animal);
+		//
+		//				this.name = name;
+		//			}
+		//
+		//			_createClass(Animal, [{
+		//				key: "sayname",
+		//				value: function sayname() {
+		//					console.log("\u6211\u7684\u540D\u5B57\u662F" + this.name);
+		//				}
+		//			}]);
+		//
+		//			return Animal;
+		//		}();
+		//今天是我们111天纪念日啦，9.9天长地久，111永不停息。111到1111到11111，111111怕是这一世没机会了，如果有来生，我还想遇见你。别说给你太大压力~都说不是以结婚为目的的谈恋爱都是耍流氓，我目的很单纯，不是耍流氓，你也不能对我耍流氓，不管怎么样，目标纲领是要明确滴。你也学期末了，别太大压力啦。我可能有点木讷，总是惹你气，谢谢你愿意气。
+		//		var cat = new Animal();
+		//		cat.name = "mao";
+		//		console.log(cat.sayname());
+		var _createClass = function() {
+			function defineProperties(target, props) {
+				for(var i = 0; i < props.length; i++) {
+					var descriptor = props[i];
+					descriptor.enumerable = descriptor.enumerable || false;
+					descriptor.configurable = true;
+					if("value" in descriptor) descriptor.writable = true;
+					Object.defineProperty(target, descriptor.key, descriptor);
+				}
+			}
+			return function(Constructor, protoProps, staticProps) {
+				if(protoProps) defineProperties(Constructor.prototype, protoProps);
+				if(staticProps) defineProperties(Constructor, staticProps);
+				return Constructor;
+			};
+		}();
+
+		function _classCallCheck(instance, Constructor) {
+			if(!(instance instanceof Constructor)) {
+				throw new TypeError("Cannot call a class as a function");
+			}
+		}
+
+		var Animal = function() {
+			function Animal(name) {
+				_classCallCheck(this, Animal);
+
+				this.name = name;
+			}
+
+			_createClass(Animal, [{
+				key: "getname",
+				value: function getname() {
+					console.log("\u6211\u7684\u540D\u5B57\u662F" + this.name);
+				}
+			}]);
+
+			return Animal;
+		}();
+
+		var cat = new Animal("kk");
+		cat.getname();
+	</script>
+
+</html>

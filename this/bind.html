@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//硬绑定
+		function aa() {
+			console.log(this.name)
+			console.log('aa:'+ this.name)
+		}
+		var obj = {
+			name: 'obj'
+			
+		}
+		var obj2 = {
+			name: 'obj2'
+		}
+//		obj2.aa = aa.bind(obj);
+//		obj2.aa();
+//		debugger;
+		if (!Function.prototype.softBind) {
+			Function.prototype.softBind = function(obj) {
+				//解决arguments不是真正数组不能使用
+				var params = [].slice.call(arguments, 1);
+				var _this = this;
+				var bound = function() {
+					//如果this绑定到全局对象或者undefined，把默认的obj绑定到this;
+					return _this.call((!this || this === (window || global)) ? obj : this,
+					params.concat.apply(params,arguments)//函数柯里化
+					)
+					
+				}
+				bound.prototype = Object.create(_this.prototype)
+				return bound;
+			}
+		}
+		var so = aa.softBind(obj)
+		so();
+		obj2.aa = aa.softBind(obj);
+		obj2.aa();
+	</script>
+</html>

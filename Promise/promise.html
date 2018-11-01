@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button class="btn" id="btn">change</button>
+	</body>
+	<script src="../js/my.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		/*function test() {
+			return new Promise((resolve,reject) => {
+			 let num = 5*Math.random();
+			 if(num>3) {
+			 	console.log(1)
+			 	resolve(num)
+			 } else {
+			 	console.log(2)
+			 	reject(num)
+			 }
+			})
+		}
+		test().then((res) => {
+			console.log('resolve',res)
+		},(err) => {
+			console.log('reject',err)
+		})*/
+//		function aa() {
+//			return new Promise((resolve,reject) => {
+//				let a = 1
+//				setInterval(() => {
+//					a++;
+//					if (a> 120) {
+//						setTimeout(() => {
+//							resolve(a)
+//						},1000)
+//						
+//					} else {
+//						setTimeout(() => {
+//							reject(a)
+//						},2000)
+//					}
+//				},100)
+//				
+//				
+//			})
+//		}
+//		aa().then((res) => {
+//			console.log(1,res)
+//		}).catch((res) => {
+//			console.log(2,res)
+//		})
+let status = true;
+function aa() {
+return new Promise((resolve,reject) => {
+ 	if (status) {
+ 		
+ 		resolve('resolve')
+ 	} else {
+
+ 		reject('reject');
+ 	}
+ }).then((res) => {
+ 		console.log(res)
+ }).catch((err) => {
+ 		console.log(err)
+ })
+}
+
+ _$('.btn').onclick = function() {
+ 	status = !status;
+ 	console.log(status)
+ 	aa();
+ }
+	</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	function removeCookie(name){
+		var date = new Date();
+		date.setTime(date.getTime()-99999);
+		console.log(date);
+		document.cookie = name + "=ll;expires=" + date.toGMTString() + "path = /";
+	}
+		removeCookie("m");
+		//console.log(document.cookie)
+	</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Hero(name,tech){
+			this.tech = tech;
+			this.name = name;
+			this.blood = 1000;
+			this.run = 480;
+		};
+		Hero.prototype = {
+			tech:function(){
+				console.log("我的技能是"+this.tech)
+			}
+		};
+		
+		var Libai = new Hero("李白","神來之筆");
+		
+	
+		Libai.run = 799;
+		console.log(Libai)
+		console.log(Libai.tech);
+		console.log(Libai.name);
+		console.log(Libai.blood)
+		console.log(Libai.run)
+	</script>
+</html>

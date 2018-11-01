@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			{{name}}
+			<p ref="aa">
+				<a href=""></a>
+			</p>
+		<button @click="add">+1</button>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script>
+	
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					name: 1
+				},
+				methods: {
+					add: function() {
+						this.name++
+					}
+				},
+				mounted(){
+					var b = this.$refs.aa.childNodes[0]
+					b.style.innerHTML="117"
+					console.log(this.$refs.aa.innerHTML)
+				}
+			})
+	</script>
+
+</html>

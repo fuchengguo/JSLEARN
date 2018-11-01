@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*new，先初始化一个对象，然后调用UrlSearch作为初始化函数。
+			初始化对象的时候，会把所有UrlSearch.prototype的属性方法，copy一份给这个对象；
+			意味着在UrlSearch里面如果调用this[name] = value，都已经被初始化过一次了。*/
+		function UrlSearch() {
+			var name, value;
+			var str = location.href; //取得整个地址栏
+			var num = str.indexOf("?")
+			str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+
+			var arr = str.split("&"); //各个参数放到数组里
+			for(var i = 0; i < arr.length; i++) {
+				num = arr[i].indexOf("=");
+				if(num > 0) {
+					name = arr[i].substring(0, num);
+					value = arr[i].substr(num + 1);
+					this[name] = value;
+				}
+			}
+		}
+		var Request = new UrlSearch(); //实例化
+		
+	</script>
+
+</html>

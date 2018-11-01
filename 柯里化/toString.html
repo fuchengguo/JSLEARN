@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function bb() {
+			let arg = arguments;
+			function aa() {
+				return arguments;
+			}
+			aa.toString = function() {
+				return arg.reduce(function(a,b) {
+					return a + b;
+				})
+			}
+			
+			return aa
+		}
+		
+		console.log(bb(121212))
+	</script>
+</html>

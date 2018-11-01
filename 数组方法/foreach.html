@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var arr = [1,2,3,4,5,7,6]
+		var obj = {
+			a: 1
+		}
+		function aa(currentValue,index,arr){
+			currentValue++
+			console.log(`currentValue:${currentValue}`)
+			console.log(`index:${index}`)
+			console.log(`arr:${arr}`)
+			console.log(this.a)
+
+		}
+		
+//		var bb = aa.bind(obj)
+//		var bb = aa.call(obj)
+//		bb()
+//		arr.forEach(bb)
+//		console.log(arr)
+//		arr.forEach(() => {
+//			console.log(this)
+//		},obj)
+		let a = 1;
+		let b = 2;
+		if(a) {
+			console.log(777)
+		} else if(b) {
+			console.log(3)
+		}
+	</script>
+</html>

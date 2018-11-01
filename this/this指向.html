@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*this指向问题*/
+		/*function aa(val) {
+			console.log(this)
+			this.count++;
+		}
+		aa.count = 0;
+		 for(let i = 0; i < 10; i++) {
+		 	if( i> 4) {
+		 		aa.call(aa,i);
+		 	}
+		 }
+		 console.log(`调用次数${aa.count}`)
+		 console.log(this.count)*/
+		var c = 3
+		function bb() {
+			var a = 2;
+			console.log(this)
+			setTimeout(() => {
+				this.bar()
+				
+			},100)
+		}
+		function bar() {
+			console.log(1)
+		}
+		bb()
+	</script>
+</html>

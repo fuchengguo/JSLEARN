@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function aa() {
+			var a;
+			function bb() {
+				var b = 1;
+//				console.log(b)
+			}
+		}
+		
+//		function foo() {
+//			function bar(a) {
+//			i = 3; // 修改for 循环所属作用域中的i
+//			console.log( a + i );
+//			}
+//			for (var i=0; i<10; i++) {
+//			bar( i * 2 ); // 糟糕，无限循环了！
+//			}
+//			}
+//			foo()
+		
+		/*词法作用域：只关注代码定义时或者说书写时所在的作用域*/
+/*		function aa() {
+			console.log(a)
+		}
+		function bb() {
+			var a = 1;
+			aa()
+		}
+		var a =2;
+		bb() //2*/
+		
+		//
+/*		var obj = {
+			b:0,
+			count: function () {
+				console.log(this)
+				console.log(this.b)
+				console.log(this.c)
+			},
+			fun: function (){
+				console.log(this)
+			}
+		}
+		var b = 3;
+		obj.c = 1;
+		obj.count();
+		obj.fun();
+		setTimeout(obj.count,1000); //this 默认绑定（隐式绑定之隐式丢失转为默认绑定）
+		*/
+		//硬绑定
+		function aa(somthing) {
+			 console.log(this.a, somthing)
+			 return this.a+somthing
+		}
+		 //辅助绑定函数
+		 function bindFn(fn,obj) {
+		 	
+		 	return function() {
+		 		console.log('arguments:',arguments)
+		 		return fn.apply(obj,arguments)
+		 	}
+		 }
+		 var obj = {
+		 	a: 1
+		 }
+		 var b = bindFn(aa,obj);
+		 var bar = b(3)
+		 console.log(bar)
+	</script>
+</html>

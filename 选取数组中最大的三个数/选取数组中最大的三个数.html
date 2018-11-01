@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="file" name="" id="" value="" />
+	</body>
+	<script>
+		var arr = [8, 666666, 5, 6, 7, 3, 1, 12, 65, 189, 8, 999];
+
+		function findmax(arr) {
+			var newarr = arr.sort(function(a, b) {
+				return a - b
+			});
+			var maxarr = newarr.slice(newarr.length - 3, newarr.length);
+			console.log(maxarr)
+		};
+		findmax(arr);
+	</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/my.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div>
+			
+		</div>
+		<button id="btn">点我加1</button>
+		<button id="btn2">点我显示点击次数</button>
+		
+	</body>
+	<script type="text/javascript">
+		_$('#btn').onclick = function() {
+				overtime(1);
+		}
+		_$('#btn2').onclick = function() {
+			console.log(overtime())
+		}
+		//多个执行的柯里化函数
+		var overtime = (function() {
+			var args = [];
+
+			return function() {
+//				console.log(1,args)
+				if(arguments.length === 0) {
+					var time = 0;
+					for(var i = 0, l = args.length; i < l; i++) {
+						time += args[i];
+					}
+					return time;
+//					console.log(time)
+				} else {
+
+					[].push.apply(args, arguments);
+				}
+			}
+		})();
+	
+	 
+	</script>
+
+</html>

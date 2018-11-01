@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="module">
+		import hello from './foo.js'
+		hello()
+		/*闭包的必要条件
+						 	1.必须是一个IIFE（immediately invoked function expression），
+						 	2.只有函数调用之后才会创建闭包，即一个可以被外部作用域访问的变量
+						 * */
+		//		foo();
+		//		function foo() {
+		//			var a = 4;
+		//			console.log(a)
+		//		}
+		//		if (true) {
+		//			var a = 1;
+		//		} else {
+		//			var b= 3;
+		//		}
+		//		console.log(b)
+		//		for(var i = 0; i < 5; i++ ) {
+		//			(function () {
+		//				console.log(i)
+		//				let j = i;
+		//				setTimeout(() => {
+		//					console.log(j)
+		//				},j*1000)
+		//			})()
+		//			
+		//		}
+		//	for (var i = 0; i< 5; i++) {
+		//		let jz = i;
+		//		setTimeout(() => {
+		//				console.log(j)
+		//		},1000)
+		//	}
+		// 	function closure() {
+		// 		var a = 11;
+		// 		var b = 12;
+		// 		function add() {
+		// 			return a+b;
+		// 		} 
+		// 		function substract() {
+		// 			return b-a;
+		// 		}
+		// 		function multiply() {
+		// 			return a*b;
+		// 		}
+		// 		return {
+		// 			add: add,
+		// 			substract: substract,
+		// 			multiply: multiply
+		// 		}
+		// 	}
+		// 	var method = closure();
+		// 	console.log(	method.add())
+
+		//		var MyModules = (function Manager() {
+		//			var modules = {};
+		//
+		//			function define(name, deps, impl) {
+		//				for(var i = 0; i < deps.length; i++) {
+		//					deps[i] = modules[deps[i]];
+		//					console.log(modules[deps[i]])
+		//				}
+		//				console.log(impl.apply(impl, [1,2]))
+		//				modules[name] = impl.apply(impl, deps);
+		//				console.log(modules)
+		//			}
+		//
+		//			function get(name) {
+		//				return modules[name];
+		//			}
+		//			return {
+		//				define: define,
+		//				get: get
+		//			};
+		//		})();
+		//		MyModules.define(5656,[1,2],(a,b) => { return a+b});
+		//		MyModules.get()
+		/*
+		 * 访问对象内部属性[]
+		 * let aa = {
+			aa:1,
+			qq:2,
+			12: 56
+		}
+		console.log(aa[12])*/
+		var MyModules = (function Manager() {
+			var modules = {};
+
+			function define(name, deps, impl) {
+				for(var i = 0; i < deps.length; i++) {
+					deps[i] = modules[deps[i]];
+				}
+				modules[name] = impl.apply(impl, deps);
+			}
+
+			function get(name) {
+				return modules[name];
+			}
+			return {
+				define: define,
+				get: get
+			};
+		})();
+
+		MyModules.define("bar", [], function() {
+			function hello(who) {
+				return "Let me introduce: " + who;
+			}
+			return {
+				hello: hello
+			};
+		});
+		MyModules.define("foo", ["bar"], function(bar) {
+			var hungry = "hippo";
+
+			function awesome() {
+				console.log(bar.hello(hungry).toUpperCase());
+			}
+			return {
+				awesome: awesome
+			};
+		});
+		var bar = MyModules.get("bar");
+		var foo = MyModules.get("foo");
+		console.log(
+			bar.hello("hippo")
+		); // Let me introduce: hippo
+		foo.awesome(); // LET ME INTRODUCE: HIPPO
+	</script>
+
+</html>

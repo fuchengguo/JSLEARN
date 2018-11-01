@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//--------------------------浅拷贝---------------------
+		//浅拷贝相当于一个指针，不会重新开辟一块内存，只会指向那一块内存地址。
+		//需要注意的是，基本数据类型的赋值=是重新开辟内存，复合数据类型之间的=只是一个内存地址
+		var a = {
+			speak:"我是a",
+			name:"我的名字是a"
+		}
+		var b = a;
+		a.speak = "wosia"
+		console.log(b.speak);//wosia
+		/*====================================================================*/
+		var a = 1;
+		var b = a;
+		a = 6;
+		console.log(b);//1
+		console.log(a);//6
+		//--------------------------深拷贝------------------------
+		//使用JSON的序列化，var b = JSON.stringify(a); 在反序列化：JSON.parse(b);
+	/*	var obj = {
+			name : obj,
+			age : "19"
+		}
+		var newObj = JSON.parse(JSON.stringify(obj));
+		console.log(newObj.age);
+		console.log(obj.age);
+		obj.age = "20";
+		console.log(newObj.age);
+		console.log(obj.age);*/
+		//-------es6 assign()-------------------
+		
+		//clone克隆
+		var obj = {
+			name : obj,
+			age : "19"
+		}
+		var newObj = Object.assign({}, obj)
+		console.log(newObj.age);
+		console.log(obj.age);
+		obj.age = "20";
+		console.log(newObj.age);
+		console.log(obj.age);
+		//merge 合并
+		var a = {a:1};
+		var b = {b:2};
+		var mergeObj = Object.assign(a,b);
+		console.log(mergeObj);
+		//【注】Object.assign() 只是一级属性复制，比浅拷贝多深拷贝了一层而已。用的时候，还是要注意这个问题的。即第二级对象无法深拷贝
+		//-----------------jq extend()--------------------
+		
+	</script>
+</html>

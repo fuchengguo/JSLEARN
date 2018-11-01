@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		if (window.history && window.history.pushState) {
+	
+		$(window).on('popstate', function() {
+			var hashLocation = location.hash;
+			var hashSplit = hashLocation.split("#!/");
+			var hashName = hashSplit[1];
+	
+			if (hashName !== '') {
+				var hash = window.location.hash;
+				if (hash === '') {
+					alert('後退按鈕點擊');
+				}
+			}
+		});
+	
+		window.history.pushState('forward', null, './#forward');
+	}
+
+	</script>
+</html>
