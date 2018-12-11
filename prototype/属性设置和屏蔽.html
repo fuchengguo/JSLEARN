@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+		 如果 foo 不直接存在于 myObject 中而是存在于原型链上层时 myObject.foo = "bar" 会出现的三种情况。
+		 1. 如果在 [[Prototype]] 链上层存在名为 foo 的普通数据访问属性（参见第 3 章）并且没
+			有被标记为只读（writable:false），那就会直接在 myObject 中添加一个名为 foo 的新
+			属性，它是屏蔽属性
+		 2. 如果在 [[Prototype]] 链上层存在 foo，但是它被标记为只读（writable:false），那么
+		       无法修改已有属性或者在 myObject 上创建屏蔽属性。如果运行在严格模式下，代码会
+		       抛出一个错误。否则，这条赋值语句会被忽略。总之，不会发生屏蔽。
+		 3. 如果在 [[Prototype]] 链上层存在 foo 并且它是一个 setter（参见第 3 章），那就一定会
+			调用这个 setter。foo 不会被添加到（或者说屏蔽于）myObject，也不会重新定义 foo 这
+			个 setter
+		如果你希望在第二种和第三种情况下也屏蔽 foo，那就不能使用 = 操作符来赋值，而是使
+		用 Object.defineProperty(..)（参见第 3 章）来向 myObject 添加 foo。
+*/
+		let obj = {};
+		Object.defineProperty(obj, 'foo',{
+			value: '200',
+			writable: true,
+			configurable: true,
+			enumerable: true
+		})
+/*		Object.defineProperty(obj, 'foo',{
+//			writable: false,不能有， get he writable不可共存
+			configurable: true,
+			enumerable: true,
+			set:() => {
+				return 5*2
+			},
+			get: () => {
+				return 5;
+			}
+		})*/
+		let pobj = Object.create(obj);
+		console.log(obj.foo)//200
+		pobj.foo = 5;
+	/*	Object.defineProperty(pobj,'foo',{
+			value: 400
+		})*/
+		console.log(obj.foo);//200
+		console.log(pobj.foo);//5
+	</script>
+</html>

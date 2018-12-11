@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var st = {
+			read: function() {
+				this.name = 'st';
+				this.count = this.count ? this.count + 11 : 1;
+			}
+		}
+		st.read();
+		console.log(st.name);
+		console.log(st.count);
+		st.read();
+		console.log(st.count);
+		
+		var nst = {
+			read: function() {
+				st.read.call(this)
+			}
+		}
+		nst.read();
+		console.log(nst.name)
+		console.log(nst.count)
+	</script>
+</html>

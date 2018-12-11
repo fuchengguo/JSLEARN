@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 for in 会遍历原型链上的属性。
+		 在查找属性的时候，会现在自身查找属性。如果不存在，就查找[Prototype]链，直至找到该属性或查找完整条原型链。
+		 使用 for..in 遍历对象时原理和查找 [[Prototype]] 链类似，任何可以通过原型链访问到（并且是 enumerable，参见第 3 章）的属性都会被枚举
+		 使用 in 操作符来检查属性在对象中是否存在时，同样会查找对象的整条原型链（无论属性是否可枚举）
+		 * */
+		let obj = {};
+		Object.defineProperty(obj, 'a', {
+			value: '500',
+			writable: true,	
+			configurable: true,
+			enumerable: true
+		})
+		let obj2 = Object.create(obj)
+		for (let i in obj2) {
+			console.log(i)
+		}
+		console.log(obj2.a)
+		console.log('a' in obj2)
+	</script>
+</html>

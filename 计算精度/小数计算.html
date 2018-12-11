@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//dight的值是小数位数+1，以保证尽可能精确
+		Math.formatFloat = function(f, digit) {
+		    var m = Math.pow(10, digit);
+		    console.log(f*m,m)
+		    return parseInt(f * m, 10) / m;
+		}
+		//let num = Math.formatFloat(1306377.64,2);//1306377.63
+		let num = Math.formatFloat(1306377.64,3);//1306377.64
+		console.log(num)
+	</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			#pan {
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				margin: 20px;
+			}
+			#swiper {
+				width:300px;
+				height: 350px;
+				border: 1px dashed blue;
+				overflow: auto;
+			}
+			.ht {
+				height: 100px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pan">
+			
+		</div>
+		<div id="swiper">
+			<div class="ht"></div>
+			<div class="ht"></div>
+			<div class="ht"></div>
+			<div class="ht"></div>
+			<div class="ht"></div>
+			
+		</div>
+	</body>
+	<script src="../js/hammer.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var hammertime = new Hammer(document.getElementById("pan"));
+		hammertime.on("pan", function (ev) {
+              //控制台输出
+              console.log(ev);
+        });
+        var hammerSwiper = new Hammer(document.getElementById("swiper"));
+          hammerSwiper.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		let i = 0;
+		hammerSwiper.on('swipeup', (ev) => {
+//      	console.log(ev)
+        	console.log('up')
+        	
+        	document.getElementById('swiper').innerHTML = i ++
+        })
+//      hammerSwiper.on('swipeup', function(ev) {
+////      	console.log(ev)
+//      	console.log('up')
+//      }).on('swiperight',function() {
+//      	console.log('right')
+//      }).on('swipeleft',function() {
+//      	console.log('left')
+//      }).on('swipedown', () => {
+//      	console.log('down')
+//      })
+	</script>
+</html>

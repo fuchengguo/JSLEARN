@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		window.onload = () => {
+//			localStorage.setItem('323','ewew');
+		}
+		window.onbeforeunload = () => {
+			debugger
+			localStorage.removeItem('323');
+			console.log(2)
+	
+//			return true;
+		}
+		window.onunload= function(event) { 
+			debugger
+			console.log(1212)
+//			localStorage.removeItem('323');
+			return false;
+		}
+	</script>
+</html>

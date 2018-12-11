@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Vehicle() {
+			this.engines = 1;
+		}
+		Vehicle.prototype.ignition = function() {
+			console.log("Turning on my engine.");
+		};
+		Vehicle.prototype.drive = function() {
+			console.log(this)
+			this.ignition();
+			console.log("Steering and moving forward!");
+		};
+
+		function Car() {
+			// 首先，car 是一个 Vehicle
+			var car = new Vehicle();
+			//			console.log(car)
+			// 接着我们对 car 进行定制
+			car.wheels = 4;
+
+			// 保存到 Vehicle::drive() 的特殊引用
+			var vehDrive = car.drive;
+			console.log()
+			// 重写 Vehicle::drive() 
+			car.drive = function() {
+				vehDrive.call(this);
+				console.log(
+					"Rolling on all " + this.wheels + " wheels!"
+				);
+			}
+			return car;
+		}
+		var myCar = new Car();
+
+		myCar.drive();
+	</script>
+
+</html>

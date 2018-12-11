@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#app {
+				height: 500px;
+				overflow: auto;
+				border: 1px solid blue;
+				box-sizing: border-box;
+			}
+			#app2 {
+				height: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="app2">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function $(el) {
+			return document.getElementById(el)
+		}
+		$('app').addEventListener('scroll',() => {
+			console.log(1)
+		})
+	</script>
+</html>

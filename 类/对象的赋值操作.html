@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+		 * 对象赋值操作 = 其实是对原对象的引用，相当于指向原来对象的堆空间的指针；
+		 * */
+		 
+		var foo = {
+			a: 1
+		}
+		var obj = foo;
+		console.log(obj.a)
+		foo.a = 23;
+		console.log(obj.a);
+		obj.a = 2323;
+		console.log(foo.a)
+		
+	</script>
+</html>

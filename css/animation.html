@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#app {
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+			.animation {
+				position: relative;
+				animation:turn .5s linear 10;
+			}
+			@keyframes turn{
+				from{
+					left: 0;
+				}
+				to{
+					left: 50px;
+				}
+			}
+			@-moz-keyframes turn{
+				from{
+					text-align: left;
+				}
+				to{
+					text-align: right;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<span class="animation">
+				...
+			</span>
+			
+		</div>
+		<a href="www.baidu.com" target="_blank">baidu</a>
+		<input type="file" accept="image/*" />
+	</body>
+</html>

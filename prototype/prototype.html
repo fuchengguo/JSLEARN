@@ -11,7 +11,7 @@
 	</body>
 	<script>
 		//Object和Function是JS自带的函数对象。
-		function Animal(name, blood) {
+	/*	function Animal(name, blood) {
 			this.blood = blood;
 			this.name = name;
 		}
@@ -29,7 +29,30 @@
 		console.log(cat.blood);
 		console.log(cat.say);
 		console.log(cat.name);
-		console.log(cat.talk());
+		console.log(cat.talk());*/
+	/*	
+	 * function aa() {
+			console.log(2)
+		}
+		aa.prototype.say = () => {
+			console.log(1)
+		}
+		let aaa = new aa();
+		console.log(aaa.constructor == aa )//true*/
+		function Foo() {
+			
+		}
+//		Foo.prototype = {
+//			
+//		}
+		let a = new Foo();
+		console.log(a.constructor == Foo)
+		console.log(typeof a)
+		
+		console.log(a.constructor.toString())
+		console.log(Foo.prototype)
+		
+		
 	</script>
 
 </html>

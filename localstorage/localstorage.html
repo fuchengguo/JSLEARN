@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.content {
+				margin: 100px auto;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content">
+			<div>
+				<span>姓名</span><input id="username" type="text" />
+			</div>
+			<div>
+				<span>密码</span><input id="ps" type="password" name="" id="" value="" />
+			</div>
+			<input type="checkbox" id="checkBox" checked="checked" value="" /><span>记住密码</span>
+			<button id="btn">登录</button>
+
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			function $(el) {
+				return document.getElementById(el)
+			}
+			let userInfo = JSON.parse(localStorage.getItem('userInfo'))//获取存储的用户信息
+			if(userInfo) {
+				//判断用户信息是否存在，即是否保存
+				$('username').value = userInfo.username
+				$('ps').value = userInfo.ps
+			} else {
+				alert('没记住密码')
+			}
+			$('btn').onclick = () => {
+				//如果记住密码点击登录保存信息
+				if($('checkBox').checked) {
+					let userInfo = {
+						username: $('username').value,
+						ps: $('ps').value
+					}
+					localStorage.setItem('userInfo', JSON.stringify(userInfo)); //存
+					alert('success')
+
+				} else {
+					alert('没点记住密码')
+				}
+			}
+			//判断是否选中
+		}
+	</script>
+
+</html>

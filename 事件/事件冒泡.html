@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			div {
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+				margin: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			11222
+			<div id="app1">
+				22
+				<div id="app2">
+					33
+					<div id="app3">
+						44
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		function stop(e) {
+			return	e.stopPropagation()?e.stopPropagation():window.event.cancelBubble;
+		}
+	var app = document.getElementById('app');
+		app.onclick = function (e) {
+//			stop(e)
+			console.log('app')
+		}
+		app1.onclick = function (e) {
+//			stop(e)
+			console.log('app1')
+		}
+		app2.onclick = function (e) {
+//			stop(e)
+			console.log('app2')
+		}
+		app3.onclick = function (e) {
+			stop(e)
+			console.log('app3')
+		}
+		
+	</script>
+</html>

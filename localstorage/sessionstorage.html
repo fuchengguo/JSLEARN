@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#qq {
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#mao">dsada</a>
+		<div id="qq">
+			
+		</div>
+		<b id="mao">dioafubuf</b>
+	</body>
+	<script type="text/javascript">
+		/*
+		 * 
+		 Onunload，onbeforeunload都是在刷新或关闭时调用，可以在<script>脚本中通过window.onunload来指定或者在<body>里指定。
+		 区别在于onbeforeunload在onunload之前执行，它还可以阻止onunload的执行。
+
+		 * */
+		var qq = sessionStorage.getItem('ee');
+		window.document.documentElement.scrollTop = qq;
+		window.addEventListener('scroll',() => {			
+			sessionStorage.setItem('ee',document.documentElement.scrollTop);
+		})
+	</script>
+</html>
