@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/html" id="tem">
+		<div>
+			<% for (var i in params) { %>
+				<div><%=params[i] %></div>
+			<% } %>
+		</div>
+	</script>
+</body>
+<script type="text/javascript" src="./template.js"></script>
+<script type="text/javascript">
+	let data = {
+		params: {
+
+			a: 1,
+			b: 2,
+			c: 3
+		}
+	}
+	// let html = template(document.getElementById('tem').innerHTML,data)
+	var html = template.render('tem', data);
+	document.getElementById('app').innerHTML = html;
+</script>
+</html>

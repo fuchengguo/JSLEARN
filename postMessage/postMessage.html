@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>postMessage</title>
+</head>
+<body>
+	<div>
+		color
+	</div>
+	<div>
+		daopjg
+		<iframe id="shop" src="http://www.tgshop.com/wap/tmpl/member/login.html"></iframe>
+	</div>
+</body>
+<script type="text/javascript">
+	window.onload = () => {
+		let iframe = document.getElementById('shop').contentWindow;
+		iframe.postMessage('fajijfa','http://www.tgshop.com/wap/tmpl/member/login.html');
+	}
+</script>
+</html>

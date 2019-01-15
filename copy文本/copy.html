@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>copy文本</title>
+</head>
+<body>
+	<div id="copy" onclick="copyText('copy')">是哦哈胳膊啊</div>
+</body>
+<script type="text/javascript">
+					function copyText(id) {
+						console.log(id);
+	                    var Url2=document.getElementById(id).innerText;
+	                    console.log(Url2);
+	                    var oInput = document.createElement('input');     //创建一个隐藏input
+	                    console.log(oInput);
+	                    oInput.value = Url2;    //赋值
+	                    console.log(oInput.value);
+	                    document.body.appendChild(oInput);
+	                    oInput.select(); // 选择对象
+	                    document.execCommand("Copy"); // 执行浏览器复制命令
+	                    oInput.className = 'oInput';
+	                    oInput.style.display='none';
+	                    console.log('复制成功');
+					}
+
+</script>
+</html>

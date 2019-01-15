@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	<!-- async 返回一个promise对象的resove值,promise是一个处理异步的同步处理函数，它总是在异步操作完成之后返回值。 -->
+	/*async function aa() {
+		// console.log(1);
+		return 12
+	}
+	aa().then((res) => {
+		console.log(res)
+	})*/
+ // promise	
+/*function test(url) {
+		return new Promise((resolve,reject) => {
+			setTimeout(() => {
+				if (false) {
+					resolve(url)
+				} else {
+					reject(`reject: ${url}`)
+				}
+			},1000)
+		})
+	}
+	test('http://baidu.com').then((res) => {
+		console.log(res)
+	}).catch((err) => {
+		console.log(err)
+	})*/
+	async function ccc() {
+		 function test() {
+			return new Promise((resolve,reject) => {
+				setTimeout(() => {
+
+					resolve(1)
+				},1000)
+			});
+		}
+		// function test() {
+		// 	setTimeout(() => {
+		// 		console.log(1)
+		// 	},1000)
+		// }
+		let qq = await test();
+		// console.log(qq)
+	}
+	ccc();
+	console.log(19)
+
+</script>
+</html>

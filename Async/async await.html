@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>async await</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+		await 之前为同步执行，await之后为同步异步执行
+		Promise.all()将多个Promise实例包装成一个新的Promise实例，成功时候的返回值是一个数组，失败的时候
+		返回最先rejec的值。
+		await 后面可以跟任何形式的JavaScript表达式，但是本意还是用来等待Promise对象的返回值。如果await的是 promise对象会造成异步函数停止执行并且等待 promise 的解决,如果等的是正常的表达式则立即执行。
+	*/
+
+	function yb(sec,mes) {
+		return new Promise((res,rej) => {
+			setTimeout(() => {
+				res(mes)
+			},sec)
+		})
+	}
+	function ybs(sec,mes) {
+		return new Promise((res,rej) => {
+			setTimeout(() => {
+				rej(mes)
+			},sec)
+		})
+	}
+	// async function test() {
+	// 	setInterval(() => {
+	// 		console.log(1)
+	// 	},1000)
+	// 	let s1 = await yb(1000, 1);
+	// 	let s2 = await yb(2000, 1);
+	// 	let s3 = await yb(3000, 1);
+	// 	console.log(s1+s2+s3)
+	// }
+	// test() 6s
+	async function test() {
+		let time = 0;
+		setInterval(() => {
+			console.log(++time)
+		},1000)
+		let a1 = yb(1000,11212)
+		let a2 = yb(2000,1)
+		let a3 = yb(3000,1)
+		console.log('1212',a1)
+		let qq = await Promise.all([a1,a2,a3]);
+		console.log(qq)
+		// a1.then((res) => {
+		// 	console.log(res)
+		// })
+		// 3s 
+	}
+	test()
+	console.log(1)
+	async function tests() {
+		let time = 0;
+		setInterval(() => {
+			console.log(++time)
+		},1000)
+		try {
+			let a1 = ybs(1000,11212)
+			let a2 = ybs(2000,1)
+			let a3 = ybs(3000,1)
+			console.log('1212',a1)
+			let qq = await Promise.all([a1,a2,a3]);
+			console.log(qq)
+		} catch(err) {
+			console.log('err',err)
+		}
+		
+		// a1.then((res) => {
+		// 	console.log(res)
+		// })
+		// 3s 
+	}
+	tests()
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/html" id="tem">
+		<div>
+			<%=data.a %>
+		</div>
+	</script>
+</body>
+<script type="text/javascript" src="./Ntemplate.js"></script>
+<script type="text/javascript">
+	let data = {
+		a: 1,
+		b: 2
+	}
+	var html = template(document.getElementById('tem').innerHTML,data);
+	document.getElementById('app').innerHTML = html;
+</script>
+</html>

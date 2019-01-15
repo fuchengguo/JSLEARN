@@ -13,12 +13,28 @@
 		//每个函数都会有一个内置的arguments对象，它相当于一个伪数组。可以使用.length和arguments[index]，但是数组的其他方法不能使用。
 		function test(qq) {
 			this.name = qq;
-//			console.log(typeof arguments)
+			// console.log(typeof arguments)
+			console.log(arguments.length)
 			console.log(arguments[0]);
 			console.log(arguments.callee)//輸出是函數本身
 			
 		}
 		test("name")
+		function qq(method) {
+			var args = arguments[arguments.length - 1];
+			var newargs = Array.prototype.slice.call(args, 0, -1);
+			console.log(newargs)
+        	newargs.push((retryHandle) => {
+
+        	});
+			method.apply(this,newargs)
+			console.log(method)
+			// var callback = args[args.length - 1];
+			// console.log(callback)
+		}
+		qq((err,t) => {
+
+		})
 	</script>
 
 </html>

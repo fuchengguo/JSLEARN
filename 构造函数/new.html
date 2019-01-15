@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>new</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+			实际上，Foo 和你程序中的其他函数没有任何区别。函数本身并不是构造函数，然而，当
+		你在普通的函数调用前面加上 new 关键字之后，就会把这个函数调用变成一个“构造函数
+		调用”。实际上，new 会劫持所有普通函数并用构造对象的形式来调用它
+	*/
+	function aa() {
+		console.log('wscat')
+	}
+	var bb = new aa();
+	console.log(bb)
+</script>
+</html>

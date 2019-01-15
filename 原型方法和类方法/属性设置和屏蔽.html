@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性设置和屏蔽</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+		1.不管是不是处于严格模式，尝试修改一个不可配置的属性描述符都会出错。注意：如你所见，把 configurable 修改成false 是单向操作，无法撤销！
+		2.即便属性是 configurable:false，我们还是可以把 writable 的状态由 true 改为 false，但是无法由 false 改为 true
+		3.除了无法修改，configurable:false 还会禁止删除这个属性：
+	*/
+	let myobject = {
+		b: 1
+	}
+	Object.defineProperty(myobject, 'a', {
+		value: '2',
+		writable: true, //是否可读
+		configurable: true, //是否可配置
+		enumerable: true
+	})	
+	// delete myobject.a //删除对象属性的操作，如果配置configurable:false,则删除失败
+	console.log(myobject)
+
+/*
+	如果属性名 a 既出现在 anotherObj 中也出现在 myObject 的 [[Prototype]] 链上层，那
+	么就会发生屏蔽。anotherObj 中包含的 a 属性会屏蔽原型链上层的所有 a 属性，因为
+	anotherObj.a 总是会选择原型链中最底层的 a 属性。
+*/
+	let anotherObj = Object.create(myobject); //创建一个关联到 myobject 的对象
+	console.log(anotherObj.a); //2 查找原型链，读取到myobject的b
+	console.log('a' in anotherObj) //true
+	// anotherObj.a = 3;
+	// console.log(myobject.a,anotherObj.a) //2,3   
+	 // 如果myobject的writable属性为true，则会在anotherObj中创建同名属性，并屏蔽prototype上的属性。屏蔽属性
+	 Object.defineProperty(myobject, 'c', {
+	 	value: 'c',
+	 	writable: false,
+	 	configurable: true,
+	 	enumerable: true
+	 })
+	 let twoObj = Object.create(myobject);
+	 console.log(twoObj.c); //c
+	 twoObj.c = 3;
+	 console.log(twoObj.c) //c
+	/*  如果在 [[Prototype]] 链上层存在 foo，但是它被标记为只读（writable:false），那么
+		无法修改已有属性或者在 myObject 上创建屏蔽属性。如果运行在严格模式下，代码会
+		抛出一个错误。否则，这条赋值语句会被忽略。总之，不会发生屏蔽
+	*/
+	var setObj = {
+		// 给 a 定义一个 getter
+		get a() {
+			return this._a_;
+		},
+		// 给 a 定义一个 setter
+		set a(val) {
+			this._a_ = val * 2;
+		}
+	};
+	setObj.a = 2;
+	console.log(setObj.a)
+	var newSetObj = Object.create(setObj);
+	newSetObj.a = 5;
+	console.log(newSetObj.a)
+	/*
+		如果在 [[Prototype]] 链上层存在 foo 并且它是一个 setter（参见第 3 章），那就一定会
+		调用这个 setter。foo 不会被添加到（或者说屏蔽于）myObject，也不会重新定义 foo 这
+		个 setter。
+	*/
+</script>
+</html>
