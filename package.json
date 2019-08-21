@@ -1,0 +1,19 @@
+{
+  "name": "jslearn",
+  "version": "1.0.0",
+  "description": "describe json",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuchengguo/JSLEARN.git"
+  },
+  "author": "fuchengguo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuchengguo/JSLEARN/issues"
+  },
+  "homepage": "https://github.com/fuchengguo/JSLEARN#readme"
+}

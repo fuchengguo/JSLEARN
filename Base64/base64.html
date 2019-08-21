@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>base64</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	对于中文，直接用btoa进行base64转码会报错：
+	Uncaught DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+	建议先用encodeURIComponent转成编码，该方法不会对数字和字母进行编码，也不会对ASCII标点符号进行编码；
+	*/
+	var str = '你好,123bo。y';
+	var encode = encodeURIComponent(str);
+	var base64 = window.btoa(encode);
+	console.log(base64);
+	var encode64 = window.atob(base64);
+	console.log(encode64);
+	console.log(decodeURIComponent(encode64));
+</script>
+</html>

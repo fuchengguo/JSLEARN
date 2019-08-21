@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="test">
+		<p>
+			<span></span>
+		</p>
+	</div>
+</body>
+<script src="./observer.js"></script>
+<script type="text/javascript">
+// querySelector.
+// var span, selector = 'div span',context=document.querySelector('#test');
+// console.log(context);
+// let qq = document.querySelector('#test p span');
+// console.log(qq)
+/*
+	关于双向数据绑定，首先设置一个监听器，监听属性变化，属性变化，通知订阅者
+*/
+for (let i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000 * i);
+}
+function Dep() {
+
+}
+console.log(Dep.target)
+// new 会劫持所有普通函数并用构造对象的形式来调用它
+function NothingSpecial() {
+	console.log( "Don't mind me!" );
+}
+var a = new NothingSpecial();
+</script>
+</html>

@@ -42,15 +42,30 @@
 		function Foo() {
 			
 		}
+		Foo.prototype.a = 2;
+		Foo.prototype.b = 2;
 //		Foo.prototype = {
 //			
 //		}
 		let a = new Foo();
-		console.log(a.constructor == Foo)
-		console.log(typeof a)
+		let b = new Foo();
+		let c = new Foo();
+		a.a = 1;
+		b.a = 3;
+		console.log(a.constructor == Foo) //true
+		console.log(typeof a) //object
 		
-		console.log(a.constructor.toString())
-		console.log(Foo.prototype)
+		console.log(a.constructor.toString()) //function Foo() {}
+		console.log(Foo.prototype) //{a: 2, b: 2, constructor: ƒ}
+		console.log(Foo.prototype.c) //undefined
+		console.log(1,Foo.constructor) //ƒ Function() { [native code] }
+		console.log(1,Foo.__proto__) //1 ƒ () { [native code] }
+		console.log(Foo); //ƒ Foo() {}
+		console.log(a.__proto__ == Foo.prototype); //true
+		console.log(a.constructor) //ƒ Foo() {}
+		console.log(a.__proto__) //{a: 2, b: 2, constructor: ƒ}
+		console.log(b);
+		console.log(b.b); //2
 		
 		
 	</script>

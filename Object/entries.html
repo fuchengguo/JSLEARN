@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>entries</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*1.传入对象*/
+	let obj = {
+		a: 123,
+		b: 2434,
+		c: 3434
+	}
+	let arr = Object.entries(obj);
+	console.log(arr) //[['a',123],['b',2434],['c',3434]]
+	/*2.传入数组*/
+	let arr1 = [1, 2, 3]; 
+	console.log(Object.entries(arr));  // [['0', 1], ['1', '2'], ['2', '3']]
+	/*3.数组中包含对象*/
+	let arr2 = [{ a: 1 }, 2, 3]; 
+	console.log(Object.entries(arr1));  // [['0', { a: 1 }], ['1', '2'], ['2', '3']]
+	/*4.数组中全部为对象*/
+	let arr3 = [{ a: 1 }, { b: 2 }, { c: 3 }]; 
+	console.log(Object.entries(arr2));  // [['0', { a: 1 }], ['1', { b: 2 }], ['2', { c: 3 }]]
+	/*5.字符串*/
+	let str = '123'; 
+	console.log(Object.entries(str));  // [['0', '1'], ['1', '2'], ['2', '3']]
+	/*6.数字浮点数*/
+	let num = 123; 
+	console.log(Object.entries(num));  // []
+
+	let float1 = 12.3; 
+	console.log(Object.entries(float1));  // []
+	/*
+		7. 将 Object 转化为 Map
+		new Map() 构造函数接受一个可迭代的 entries 。 借助 Object.entries 方法你可以很容易的将 Object 转换为 Map:
+	*/
+	let obj2 = { foo: 'bar', baz: 'abc' }; 
+	console.log(Object.entries(obj2));  // [['foo', 'bar'], ['baz', 'abc']]
+	let map = new Map(Object.entries(obj2)); 
+	console.log(map); // Map {'foo' => 'bar', 'baz' => 'abc'}
+</script>
+</html>

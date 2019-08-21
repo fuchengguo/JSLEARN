@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>call</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function aa() {
+		console.log(typeof arguments)
+		let arr = [1,2,3];
+		let qq = Array.prototype.slice.bind(arguments)
+		console.log(qq())
+		console.log(Array.prototype)
+	}
+	aa(1,2,3)
+
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="./emitter.js"></script>
+<script type="text/javascript">
+	console.log($emitter)
+	$emitter.monitor('groupChat',function(data)  {
+		console.log(212121,data)
+	})
+	$emitter.monitor('groupChat',function(data)  {
+		console.log(212121,data)
+	})
+	$emitter.dispatch_msg('groupChat',[1,2]);
+
+</script>
+</html>

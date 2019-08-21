@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*前n个数相加*/
+	function sum(n) {
+		if (n == 1) {
+			return 	1
+		} 
+		return sum(n - 1) + n
+	}
+	console.log(sum(100))
+	/*偶数相加*/
+	function oSum(n) {
+		if (n == 0) {
+			return 0
+		}
+		if (n%2 == 0) {
+			return oSum(n - 2) + n
+		}
+	}
+	console.log(oSum(10))
+</script>
+</html>

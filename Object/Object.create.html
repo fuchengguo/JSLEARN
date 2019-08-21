@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object.create</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+		Object.create()的polifill
+	*/
+	if (!Object.create) {
+		Object.create = function(o) {
+			function F(){}
+			F.prototype = o;
+			return new F();
+		};
+	}
+	var obj = {
+		a: 1
+	}
+	console.log(Object.create)
+	// var qq = Object.creates(obj);
+	// console.log(qq.a)
+
+	/*
+		面向对象设计
+	*/
+	function Foo(who) {
+		this.me = who;
+	}
+	Foo.prototype.identify = function() {
+		return "I am " + this.me;
+	};
+	function Bar(who) {
+		Foo.call( this, who );
+	}
+	Bar.prototype = Object.create( Foo.prototype );
+	Bar.prototype.speak = function() {
+		console.log( "Hello, " + this.identify() + "." );
+	};
+	console.log(Bar.prototype)
+	var b1 = new Bar( "b1" );
+	var b2 = new Bar( "b2" );
+	b1.speak();
+	b2.speak();
+</script>
+</html>

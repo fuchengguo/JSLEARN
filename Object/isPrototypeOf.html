@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>isPrototypeOf</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var a = function() {
+
+	}
+	var b = new a();
+	// var b = {}
+	// b = Object.create(a);
+	console.log(typeof a)
+	console.log(b)
+	console.log(a.isPrototypeOf(b))
+	// function isRelatedTo(o1, o2) {
+	// 	function F(){}
+	// 	F.prototype = o2;
+	// 	return o1 instanceof F;
+	// }
+	// var a = {};
+	// var b = Object.create( a );
+	// console.log(a.isPrototypeOf(b))
+	// console.log(isRelatedTo( b, a ))
+</script>
+</html>

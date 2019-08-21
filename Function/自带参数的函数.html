@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	let qqq;
+	var obj = {
+		qq: function(callback) {
+			if (callback) {
+				qqq = callback;
+			}
+		}
+	}
+	obj.qq((we,next) => {
+		console.log(12,we);
+		next()
+	})
+	qqq(122121,() => {
+		console.log('cb')
+	})
+	var a = function(da) {
+		console.log(da)
+	}
+	a(32)
+</script>
+</html>

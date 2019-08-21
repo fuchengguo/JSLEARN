@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chayi</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	Object.prototype.clone = function(){
+	  // 创建一个新的对象，并用 this 作为它的原型
+	  var p = Object.create(this);
+	  console.log(this)
+	  /* 并不是必须的:
+	  // 在新对象上应用构造函数
+	  this.constructor.apply(p, arguments);
+	  */
+
+	  return p;
+	};
+		var root = {}; // Could be any object with any prototype object
+
+	var record = root.clone();
+	record.toString = function(){ return "a Record"; };
+	 
+	var person = root.clone();
+	person.firstName = false;
+	person.lastName = false;
+	person.toString = function(){ 
+	    return this.firstName ?
+	               (this.lastName ?
+	                   this.firstName + " " +this.lastName :
+	                   this.firstName) :
+	               (this.lastName ?
+	                   this.lastName :
+	                   "a Person");
+	};
+	 
+	JoePerson = person.clone();
+	JoePerson.firstName = "Joe";
+	alert( JoePerson.toString() );
+</script>
+</html>

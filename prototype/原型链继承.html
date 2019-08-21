@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+	function Animal(name) {
+		this.name = name;
+		this.behavior = function() {
+			return this.name+'behavior';
+		}
+	}
+
+	function cat(name) {
+		this.name = name;
+	}
+	cat.prototype = new Animal('mao');	
+	cat.prototype.type = '犬类';
+	var Cat = new cat('mao1');
+	console.log(Animal.type); //undefined
+	console.log(Cat.name) //mao1
+	console.log(Cat.type) //犬类
+</script>
+</html>

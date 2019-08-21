@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>scan</title>
+</head>
+<style type="text/css">
+	.img-box {
+    background: linear-gradient(#ae0000, #ae0000) left top,
+    linear-gradient(#ae0000, #ae0000) left top,
+    linear-gradient(#ae0000, #ae0000) right top,
+    linear-gradient(#ae0000, #ae0000) right top,
+    linear-gradient(#ae0000, #ae0000) right bottom,
+    linear-gradient(#ae0000, #ae0000) right bottom,
+    linear-gradient(#ae0000, #ae0000) left bottom,
+    linear-gradient(#ae0000, #ae0000) left bottom;
+	  background-repeat: no-repeat;
+	  background-size: 2px 20px, 20px 2px;
+	  height: 116px;
+	  width: 116px;
+}       
+.img-box img:nth-of-type(1) {
+	position: relative;
+	width: 116px;
+	animation: myScan 2.7s infinite normal;
+} 
+.code {
+    height: 110px;
+    width: 110px;
+    margin-top: 2px;
+    margin-left:2px;
+    border: 1px solid #ae0000;
+}    
+@keyframes myScan {
+        from {
+            top: 0;
+        }
+        to {
+            top: 110px;
+        }
+    }
+</style>
+<body>
+	<div class="img-box">
+		<img src="./line.png">
+	    <!-- <img class="code"  src="https://image-static.segmentfault.com/149/570/149570997-5b987cc928d69_articlex"> -->
+	</div>
+</body>
+</html>

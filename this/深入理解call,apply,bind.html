@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function aa(a,b) {
+		console.log(this)
+		console.log('a',arguments)
+		console.log(a + b);
+
+	}
+	function bb() {
+		console.log(arguments)
+		
+	}
+	aa.apply(bb,[1,2])
+	aa.call(bb,1,2)
+	aa.bind(bb)(1,2)
+	// bb(1,2,3)
+</script>
+</html>

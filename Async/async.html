@@ -52,5 +52,21 @@
 	ccc();
 	console.log(19)
 
+/*测试异步函数配合async*/
+async function asyncFu() {
+	setTimeout(() => {
+		console.log(3)
+	},1000)
+		// return 23;
+	
+}
+async function ceshi() {
+	let qq = await asyncFu();
+	console.log(qq)
+	// return qq;
+}
+ceshi().then((res) => {
+	console.log(res)
+})
 </script>
 </html>

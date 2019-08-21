@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片上传</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+		方法一
+	*/
+						let objectURL = window.URL.createObjectURL(Img);
+                        let img = new Image();
+                        img.src = objectURL;
+                        let self = this;
+     
+                        img.onload = function () {
+                            var canvas = document.getElementById("canvas");
+                            var ctx = canvas.getContext("2d");
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            var dataURL = canvas.toDataURL();
+                            console.log(dataURL)
+                            self.formData = dataURL;
+                            self.src = self.formData;
+                        }
+    /*
+		方法二
+
+    */
+    					let reader = new FileReader();
+                        //console.log(1,reader.readAsDataURL(Img));
+
+                        let self = this;
+                
+                        reader.onload = function (e) {
+                            let ev = e || window.event;
+                            let url = ev.target.result; //转base64
+                            // let formData = new FormData();
+                            // formData.append('head_img', url);
+                            // console.log(url);
+                            // self.formData = formData.get('head_img');
+                            self.formData = url;
+                            self.src = url;
+                           
+                        }
+                        reader.readAsDataURL(Img);
+</script>
+</html>

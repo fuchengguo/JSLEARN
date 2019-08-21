@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<title>history</title>
+	<style type="text/css">
+		a {
+			cursor: pointer;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+<!-- 	<ul id="ul">
+		<li><a data-href='06' href="jaavascript:alert(1)" >aluoa</a>  </li>
+        <li><a href="#/01?qq=1">欢迎</a> </li>
+        <li> <a href="#/02">一代天骄</a> </li>
+        <li> <a href="#/03">霸王</a> </li>
+        <li><a href="#/04">秦始皇</a> </li>
+        <li><a href="#/05">释迦摩尼</a> </li>
+	</ul> -->
+	<ul id="ul">
+		<li><a data-href='/06' href="jaavascript:alert(1)" >aluoa</a>  </li>
+        <li><a data-href='/01'>欢迎</a> </li>
+        <li> <a data-href='/02'>一代天骄</a> </li>
+        <li> <a data-href='/03'>霸王</a> </li>
+        <li><a data-href='04'>秦始皇</a> </li>
+        <li><a data-href='05'>释迦摩尼</a> </li>
+	</ul>
+	<a href="#/href">32323</a>
+	<section></section>
+</body>
+<script type="text/javascript" src="./History/router.js"></script>
+<script type="text/javascript">
+	var MyRouter = new Router({
+		mode: 'hash',
+		routes: [{
+			path: '/01',
+			name: 'QQ',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "欢迎来到火星，这是一次非常的旅行，祝您路途愉快！";
+			}
+
+		},
+		{
+			path: '/02',
+			name: 'QQ',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "一代天骄，我是02";
+			}
+
+		},
+		{
+			path: '/03',
+			name: 'QQ',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "03";
+			}
+
+		},
+		{
+			path: '/04',
+			name: 'QQ',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "04";
+			}
+
+		},
+		{
+			path: '/05',
+			name: 'QQ',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "05";
+			}
+
+		},{
+			path: '/06',
+			name: '06',
+			callback: function() {
+				var Osect = document.querySelector('section');
+	            Osect.innerHTML = "06";
+			}
+		},{},{},{},{},{},{}]
+	});
+	MyRouter.init();
+	document.getElementById('ul').onclick = function(e) {
+		if (e.target.nodeName === 'A') {
+			// window.history.pushState({},'index',e.target.dataset.href)
+			console.log(e.target.dataset.href)
+			// MyRouter.push({ path: e.target.dataset.href ,query: {qq: { mm: 1,bb: 2},qw:9}})
+			MyRouter.push('/01')
+		}
+	}
+	// 	location.hash='#/'
+	// setInterval(() => {
+	// },1000)
+	// window.addEventListener('hashchange',(e) => {
+	// 	console.log('history:',history)
+	// 	console.log('location:', location.hash.slice(1))
+	// 	console.log(1)
+	// 	console.log(e)
+	// })
+	// window.onload = function(){
+	// 		// var Osect = document.querySelector('#id');
+	//     (function(){
+	//         var Router=function(){
+	//             this.routes={};
+	//             this.curUrl='/';
+	//         };
+	//          // 对路由的hash值进行监听，如果发生改变，则调用reloadPage()函数
+	//         Router.prototype.init= function(){
+	//             // 这里的两个this 是不一样的，需要注意
+	//             console.log(this.routes)
+	//             window.addEventListener('hashchange',this.reloadPage.bind(this) );
+	//         };
+	//         // 调用reloadPage函数，实际上时执行routes[]()函数
+	//         Router.prototype.reloadPage = function(){
+	//         	console.log(this)
+	//             this.curUrl = location.hash.substring(1)||'/';
+	//             this.routes[this.curUrl]();
+	//         };
+	//           // 路由配置的规则
+	//         Router.prototype.map = function(key,callback){
+	//             this.routes[key] = callback;
+	//         }
+	//         window.Router = Router;
+	//         })();
+
+	//         var ORouter = new Router();
+	//         ORouter.init();
+
+	//         // 以下为路由配置的设置，形象的当做一个路由与调用函数的映射表也可以
+	//         ORouter.map('/',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "欢迎来到火星，这是一次非常的旅行，祝您路途愉快！";
+	//         });
+	//          ORouter.map('/01',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 huanying2015 ";
+	//         });
+	//          ORouter.map('/02',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "hehehehehheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeheheehehehhehehehhehehehehheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeheheehehehhehehehhehehehehheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeheheehehehheheheh";
+	//         });
+	//          ORouter.map('/03',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  nihao  ";
+	//         });
+	//          ORouter.map('/04',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine i am fine ";
+	//         });
+	//         ORouter.map('/05',function(){
+	//             var Osect = document.querySelector('section');
+	//             Osect.innerHTML = "good night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night ood night  ";
+	//         });
+	// }
+</script>
+</html>

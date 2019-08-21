@@ -7,33 +7,50 @@
 	<body>
 	</body>
 	<script type="text/javascript">
-		var arr = [1,2,3,4,5,7,6]
-		var obj = {
-			a: 1
+		const config = {
+		    tokenSecret: 'fuchengguo',
+		    noCheckPath: ['/login','register'],
+		    noCheck: function(path) {
+		    	let has = false;
+		        this.noCheckPath.forEach(function(currentValue,index,arr) {
+		        	console.log(currentValue == '/login')
+		            if (path === currentValue) {
+		               has = true;
+		               return 
+		            }
+		        })
+		        return has
+		    }
 		}
-		function aa(currentValue,index,arr){
-			currentValue++
-			console.log(`currentValue:${currentValue}`)
-			console.log(`index:${index}`)
-			console.log(`arr:${arr}`)
-			console.log(this.a)
+		console.log(config.noCheck('/register'))
+		
+// 		var arr = [1,2,3,4,5,7,6]
+// 		var obj = {
+// 			a: 1
+// 		}
+// 		function aa(currentValue,index,arr){
+// 			currentValue++
+// 			console.log(`currentValue:${currentValue}`)
+// 			console.log(`index:${index}`)
+// 			console.log(`arr:${arr}`)
+// 			console.log(this.a)
 
-		}
-		arr.forEach(aa)
-		// var bb = aa.bind(obj)
-		// bb()
-		// var bb = aa.call(obj)
-//		arr.forEach(bb)
-//		console.log(arr)
-		// arr.forEach(() => {
-		// 	console.log(this)
-		// },obj)
-		let a = 1;
-		let b = 2;
-		if(a) {
-			console.log(777)
-		} else if(b) {
-			console.log(3)
-		}
+// 		}
+// 		arr.forEach(aa)
+// 		// var bb = aa.bind(obj)
+// 		// bb()
+// 		// var bb = aa.call(obj)
+// //		arr.forEach(bb)
+// //		console.log(arr)
+// 		// arr.forEach(() => {
+// 		// 	console.log(this)
+// 		// },obj)
+// 		let a = 1;
+// 		let b = 2;
+// 		if(a) {
+// 			console.log(777)
+// 		} else if(b) {
+// 			console.log(3)
+// 		}
 	</script>
 </html>
