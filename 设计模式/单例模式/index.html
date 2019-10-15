@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 单体模式
+  var CreateDiv = function (html) {
+    this.html = html;
+    this.init();
+  }
+  CreateDiv.prototype.init = function () {
+    var div = document.createElement("div");
+    div.innerHTML = this.html;
+    document.body.appendChild(div);
+  };
+  // 代理实现单体模式
+  var ProxyMode = (function () {
+    var instance;
+    return function (html) {
+      if (!instance) {
+        instance = new CreateDiv("我来测试下");
+      }
+      return instance;
+    }
+  })();
+  var a = new ProxyMode("aaa");
+  var b = new ProxyMode("bbb");
+  console.log(a === b);// true
+</script>
+
+</html>

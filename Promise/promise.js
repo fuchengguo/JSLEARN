@@ -25,3 +25,15 @@ promise.then((res,ewq) => {
 setTimeout(() => {
 	console.log(2)
 },0)
+console.log(2)
+function foo() { 
+	baz.bar(); 
+	setTimeout( function(){ 
+	}, 100 ); 
+ } 
+ try {
+	foo()
+ } catch (err) {
+	console.error(err)
+ }
+ console.log(1)

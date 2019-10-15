@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="560" height="560">
+        can't see this
+    </canvas>
+    <div id="msg"></div>
+    <img id="block" src="./img/block.gif" alt="" style="display:none;">
+    <img id="wall" src="./img/wall.png" alt="" style="display:none;">
+    <img id="box" src="./img/box.png" alt="" style="display:none;">
+    <img id="down" src="./img/down.png" alt="" style="display:none;">
+    <img id="left" src="./img/left.png" alt="" style="display:none;">
+    <img id="right" src="./img/right.png" alt="" style="display:none;">
+    <img id="up" src="./img/up.png" alt="" style="display:none;">
+    <img id="ball" src="./img/ball.png" alt="" style="display:none;">
+    <p id="msg"></p>
+    <input type="button" value="上一关" onclick="level(-1)">
+    <input type="button" value="重玩" onclick="level(0)">
+    <input type="button" value="下一关" onclick="level(1)">
+    <script src="./js/map.js"></script>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var dWidth = 35,
+            dHeight = 35;
+        var iCurLevel = 0; //当前关卡+1
+        var steps = 0; // 移动步数
+        var currenMap = [],
+            userMap = [];
+        var msg = document.getElementById('msg');
+        var block = document.getElementById('block');
+        var wall = document.getElementById('wall');
+        var box = document.getElementById('box');
+        var down = document.getElementById('down');
+        var left = document.getElementById('left');
+        var right = document.getElementById('right');
+        var up = document.getElementById('up');
+        var ball = document.getElementById('ball');
+        var curMan = down; //小人面向
+        // 复制二维数组
+        function copyArray(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                newArr[i] = arr[i].concat();
+            }
+            return newArr;
+        }
+        // 初始化
+        function init() {
+            currenMap = copyArray(levels[iCurLevel]) // 当前原样地图
+            userMap = copyArray(levels[iCurLevel]) // 当前使用地图
+            steps = 0; // 初始化步数
+            curMan = down; // 初始化小人面朝下
+            msg.innerHTML = "当前第：" + (iCurLevel + 1) + "关，移动步数：" + steps;
+            drawBlock() // 画草地
+            drawMap(currenMap) // 画关卡地图
+        }
+
+        // 画草地
+        function drawBlock() {
+            for (var i = 0; i < 16; i++) {
+                for (var j = 0; j < 16; j++) {
+                    ctx.drawImage(block, i * dWidth, j * dHeight, dWidth, dHeight);
+
+                }
+            }
+        }
+        // 画小人位置
+        function Point(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        var per_position = new Point(5, 5);
+        // 画关卡地图
+        function drawMap(level) {
+            for (var i = 0; i < level.length; i++) {
+                for (var j = 0; j < level[i].length; j++) {
+                    var pic = block;
+                    switch (level[i][j]) {
+                        case 0:
+                            pic = block;
+                            break;
+                        case 1:
+                            pic = wall;
+                            break;
+                        case 2:
+                            pic = ball;
+                            break;
+                        case 3:
+                            pic = box;
+                            break;
+                        case 4:
+                            pic = curMan;
+                            per_position.x = i;
+                            per_position.y = j;
+                            break;
+                        case 5:
+                            pic = box;
+                            break;
+                    }
+                    ctx.drawImage(pic, j * dWidth - (pic.width - dWidth) / 2, i * dHeight - (pic.height - dHeight), pic.width, pic.height);
+                }
+            }
+        }
+
+        // 切换关卡
+        function level(next) {
+            iCurLevel += next
+            if (iCurLevel < 0) {
+                alert('当前第一关');
+                return;
+            }
+            if (iCurLevel > levels.length - 1) {
+                alert('当前最后一关');
+                return;
+            }
+            init();
+        }
+
+        // 绑定键盘 up down left right
+        document.onkeydown = function curManUp(event) {
+            var keyCode = event.keyCode;
+            var p1 = {
+                x: 0,
+                y: 0
+            }
+            var p2 = {
+                x: 0,
+                y: 0
+            }
+            switch (keyCode) {
+                case 38:
+                    curMan = up;
+                    p1.x = per_position.x - 1;
+                    p1.y = per_position.y;
+                    p2.x = per_position.x - 2;
+                    p2.y = per_position.y;
+                    break;
+                case 39:
+                    curMan = right;
+                    p1.x = per_position.x;
+                    p1.y = per_position.y + 1;
+                    p2.x = per_position.x;
+                    p2.y = per_position.y + 2;
+                    break;
+                case 40:
+                    curMan = down;
+                    p1.x = per_position.x + 1;
+                    p1.y = per_position.y;
+                    p2.x = per_position.x + 2;
+                    p2.y = per_position.y;
+                    break;
+                case 37:
+                    curMan = left;
+                    p1.x = per_position.x;
+                    p1.y = per_position.y - 1;
+                    p2.x = per_position.x;
+                    p2.y = per_position.y - 2;
+                    break;
+            }
+            // 墙1，盒子3和墙1，盒子3和盒子3，盒子3和陷阱5,陷阱5和盒子3，陷阱5和墙1 都不能移动！
+            if (userMap[p1.x][p1.y] == 1) {
+                return false;
+            }
+            if (userMap[p1.x][p1.y] == 3 && (userMap[p2.x][p2.y] == 1 || userMap[p2.x][p2.y] == 3 || userMap[p2.x][p2.y] == 5)) {
+                return false;
+            }
+            if (userMap[p1.x][p1.y] == 5 && (userMap[p2.x][p2.y] == 1 || userMap[p2.x][p2.y] == 3 || userMap[p2.x][p2.y] == 5)) {
+                return false;
+            }
+            // 草地0 可以移动
+            if (userMap[p1.x][p1.y] == 0) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+            }
+            // 盒子和草地 可以移动
+            if (userMap[p1.x][p1.y] == 3 && userMap[p2.x][p2.y] == 0) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+                userMap[p2.x][p2.y] = 3
+            }
+            // 盒子和球 可以移动
+            if (userMap[p1.x][p1.y] == 3 && userMap[p2.x][p2.y] == 2) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+                userMap[p2.x][p2.y] = 5
+            }
+            // 球2 可以移动
+            if (userMap[p1.x][p1.y] == 2) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+            }
+            // 陷阱5和草地 可以移动
+            if (userMap[p1.x][p1.y] == 5 && userMap[p2.x][p2.y] == 0) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+                userMap[p2.x][p2.y] = 3
+            }
+            // 陷阱5和球 可以移动
+            if (userMap[p1.x][p1.y] == 5 && userMap[p2.x][p2.y] == 2) {
+                userMap[per_position.x][per_position.y] = 0;
+                userMap[p1.x][p1.y] = 4;
+                userMap[p2.x][p2.y] = 5
+            }
+
+            // 当前小人位置 原先是球的话
+            if (currenMap[per_position.x][per_position.y] == 2 || currenMap[per_position.x][per_position.y] == 5) {
+                userMap[per_position.x][per_position.y] = 2;
+            }
+
+            steps++;
+            msg.innerHTML = "当前第：" + (iCurLevel + 1) + "关，移动步数：" + steps
+            drawBlock();
+            drawMap(userMap);
+            if (win()) {
+                level(1);
+            }
+        }
+
+        // 判断是否结束
+        function win() {
+            for (var i = 0; i < currenMap.length; i++) {
+                for (var j = 0; j < currenMap[i].length; j++) {
+                    if (currenMap[i][j] == 2 && userMap[i][j] !== 5 || currenMap[i][j] == 5 && userMap[i][j] !== 5) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        // 初始化
+        init()
+    </script>
+</body>
+
+</html>
